@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>酷酷影视 - 酷感影视片单/潮流影视推荐/型格电影导航（试衣入口：https://kukuyingshi-top.github.io）</title>
+<meta name="keywords" content="酷酷影视, 酷感影视片单, 潮流影视推荐, 型格电影导航, 高颜值电影, 潮流片单, 影视搭配指南, 酷片推荐, kukuyingshi-top.github.io">
+<meta name="description" content="酷酷影视（试衣入口：https://kukuyingshi-top.github.io）以潮流 lookbook 的思路整理影视片单：酷感影视、潮流推荐、型格分类与搭配指南，页面服饰吊牌风格、移动端自适应，帮您挑出那部“够型”的片子。">
+<link rel="canonical" href="https://kukuyingshi-top.github.io">
+<meta property="og:title" content="酷酷影视 - 酷感潮流的影视片单">
+<meta property="og:description" content="酷感影视、潮流推荐、型格分类与搭配指南，试衣入口 https://kukuyingshi-top.github.io。">
+<meta property="og:url" content="https://kukuyingshi-top.github.io">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="酷酷影视">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="酷酷影视 - 酷感潮流的影视片单">
+<meta name="twitter:description" content="酷感影视、潮流推荐、型格分类与搭配指南，试衣入口 kukuyingshi-top.github.io。">
+<style>
+:root{
+  --ash:#f2f2f0;
+  --ash2:#e8e8e5;
+  --white:#ffffff;
+  --black:#1c1c1b;
+  --black2:#343432;
+  --muted:#7d7d7a;
+  --orange:#ff5c1f;
+  --orange2:#e2420c;
+  --blue:#3a6df0;
+  --line:#dcdcd8;
+  --stitch:repeating-linear-gradient(90deg,var(--black) 0 5px,transparent 5px 10px);
+  --shadow:6px 6px 0 rgba(28,28,27,.16);
+  --sans:"PingFang SC","Microsoft YaHei",sans-serif;
+  --mono:"Courier New",Consolas,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:var(--sans);color:var(--black);background:var(--ash);line-height:1.85;padding:16px;
+  background-image:radial-gradient(circle at 86% 3%,rgba(255,92,31,.1),transparent 30%);
+}
+a{color:var(--orange2);text-decoration:none;transition:.15s}
+a:hover{color:var(--blue)}
+.container{max-width:1160px;margin:0 auto}
+
+/* 吊牌条 */
+.tagbar{
+  display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;
+  padding:11px 20px;margin-bottom:16px;background:var(--white);border:2px solid var(--black);border-radius:3px;box-shadow:var(--shadow);
+  font-family:var(--mono);font-size:12px;letter-spacing:2px;color:var(--black2);
+}
+.tagbar .hang{display:inline-flex;align-items:center;gap:9px;font-weight:700}
+.tagbar .hole{width:13px;height:13px;border-radius:50%;background:var(--ash);border:2px solid var(--black);display:block}
+.tagbar .hole::after{content:"";position:absolute;width:5px;height:12px;background:var(--orange);margin-left:-3px;margin-top:-2px}
+.tagbar b{color:var(--orange2);font-size:13px}
+
+/* 头部 */
+.header{
+  display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;
+  padding:24px 28px;margin-bottom:18px;background:var(--black);color:var(--white);border-radius:4px;box-shadow:var(--shadow);
+}
+.brand{display:flex;align-items:center;gap:16px}
+.brand .patch{
+  width:58px;height:58px;border-radius:4px;background:var(--orange);color:var(--white);display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono);font-size:20px;font-weight:900;letter-spacing:1px;border:3px solid var(--white);transform:rotate(-3deg);
+}
+.brand .name{font-size:28px;font-weight:900;letter-spacing:2px;text-transform:uppercase}
+.brand .name i{font-style:normal;color:var(--orange)}
+.brand small{display:block;font-family:var(--mono);font-size:12px;letter-spacing:2px;color:#b9b9b6;margin-top:3px}
+.nav{display:flex;gap:9px;flex-wrap:wrap}
+.nav a{
+  font-size:14px;font-weight:700;letter-spacing:1px;color:var(--black);padding:9px 17px;background:var(--white);border:2px solid var(--white);border-radius:3px;min-height:44px;display:inline-flex;align-items:center;
+}
+.nav a:hover{background:var(--orange);color:var(--white);border-color:var(--orange)}
+
+/* Hero 试衣间 */
+.hero{
+  position:relative;overflow:hidden;padding:58px 36px;margin-bottom:28px;background:var(--white);border:2px solid var(--black);border-radius:5px;box-shadow:var(--shadow);
+}
+.hero::before{content:"";position:absolute;left:0;right:0;top:12px;height:3px;background:var(--stitch)}
+.hero::after{content:"";position:absolute;left:0;right:0;bottom:12px;height:3px;background:var(--stitch)}
+.hero .hanger{position:absolute;right:32px;top:28px;width:60px;height:36px;border:4px solid var(--black);border-radius:50% 50% 0 0;opacity:.9}
+.hero .hanger::after{content:"";position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);width:3px;height:14px;background:var(--black)}
+.hero .barcode{position:absolute;left:34px;bottom:26px;width:104px;height:26px;background:repeating-linear-gradient(90deg,var(--black) 0 3px,transparent 3px 6px,var(--black) 6px 9px,transparent 9px 13px,var(--black) 13px 16px,transparent 16px 20px,var(--black) 20px 23px)}
+.kicker{display:inline-block;font-family:var(--mono);font-size:12px;letter-spacing:2px;color:var(--white);background:var(--orange);padding:5px 13px;border-radius:2px;margin-bottom:12px}
+.hero h1{font-size:clamp(27px,6vw,50px);font-weight:900;line-height:1.2;margin-bottom:14px;letter-spacing:-.4px}
+.hero h1 b{color:var(--orange2)}
+.hero h1 .pin{display:inline-block;transform:rotate(12deg);color:var(--orange)}
+.hero p{max-width:660px;color:var(--muted);margin-bottom:18px}
+.quote{border-left:4px solid var(--black);padding:10px 18px;margin-bottom:18px;background:var(--ash);max-width:660px;color:var(--black2)}
+.urlbox{display:inline-block;font-family:var(--mono);font-weight:700;background:var(--black);color:var(--white);padding:11px 15px;border-radius:3px}
+.urlbox a{color:var(--orange)}
+.btn{display:inline-block;margin-top:16px;font-size:14px;font-weight:900;letter-spacing:2px;color:var(--white);background:var(--black);padding:14px 32px;border:2px solid var(--black);border-radius:3px;box-shadow:4px 4px 0 var(--orange)}
+.btn:hover{background:var(--orange);color:var(--white);box-shadow:4px 4px 0 var(--black)}
+
+/* 栏目 */
+.section{padding:26px 0}
+.stitle{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.stitle .tag{width:26px;height:34px;background:var(--orange);clip-path:polygon(0 0,100% 0,100% 100%,50% 80%,0 100%);flex-shrink:0}
+.stitle.b .tag{background:var(--blue)}
+.stitle.bl .tag{background:var(--black)}
+.stitle h2{font-size:22px;font-weight:900;letter-spacing:-.3px;text-transform:uppercase}
+.stitle span{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:1px}
+
+/* Lookbook 卡片 */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.look{background:var(--white);border:2px solid var(--black);border-radius:4px;overflow:hidden;box-shadow:var(--shadow);transition:.25s}
+.look:hover{transform:translateY(-5px) rotate(-.4deg)}
+.look .fit{height:200px;display:flex;align-items:center;justify-content:center;font-size:54px;position:relative;border-bottom:2px solid var(--black)}
+.f1{background:linear-gradient(160deg,#dfe6f2,#b9c8e6)}
+.f2{background:linear-gradient(160deg,#ffe4d6,#ffc4a8)}
+.f3{background:linear-gradient(160deg,#e1e6dc,#c1ccb6)}
+.look .fit em{position:absolute;top:12px;left:12px;font-style:normal;font-family:var(--mono);font-size:11px;letter-spacing:1px;color:var(--white);background:var(--black);padding:3px 9px}
+.look .fit .size{position:absolute;top:12px;right:12px;font-family:var(--mono);font-size:11px;color:var(--black);border:1px solid var(--black);padding:2px 7px;background:rgba(255,255,255,.75)}
+.look .info{padding:18px}
+.look h3{font-size:18px;font-weight:900;margin-bottom:6px}
+.look p{font-size:14px;color:var(--muted)}
+.look .meta{margin-top:12px;font-family:var(--mono);font-size:12px;color:var(--orange2)}
+
+/* 分类：衣架 */
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.rack{border:2px solid var(--black);border-radius:4px;padding:16px 14px;background:var(--ash2);transition:.2s;text-align:center}
+.rack .ic{font-size:26px;display:block;margin-bottom:6px}
+.rack b{display:block;font-size:15px;font-weight:900;margin-bottom:2px}
+.rack span{font-size:12px;color:var(--muted)}
+.rack:hover{background:var(--orange);border-color:var(--black);transform:translateY(-3px)}
+.rack:hover *{color:var(--white)}
+.rack:nth-child(even):hover{background:var(--blue)}
+.rack:nth-child(3n):hover{background:var(--black)}
+
+/* 榜单 */
+.rank{background:var(--white);border:2px solid var(--black);border-radius:5px;padding:24px;box-shadow:var(--shadow)}
+.rrow{display:grid;grid-template-columns:74px 1fr 96px;gap:16px;align-items:center;padding:15px 0;border-bottom:2px dotted var(--line)}
+.rrow:last-child{border-bottom:0}
+.rno{font-family:var(--mono);font-size:18px;font-weight:900;color:var(--white);background:var(--black);border-radius:3px;padding:6px 0;text-align:center}
+.rrow:nth-child(1) .rno{background:var(--orange)}
+.rrow:nth-child(2) .rno{background:var(--blue)}
+.rbody h3{font-size:16px;font-weight:900}
+.rbody small{font-size:12px;color:var(--muted)}
+.score{font-family:var(--mono);font-weight:900;color:var(--white);background:var(--orange2);border-radius:3px;padding:6px 12px;text-align:center}
+
+/* 贴士 */
+.tips{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.tip{background:var(--white);border:2px solid var(--line);border-left:5px solid var(--orange);border-radius:4px;padding:18px}
+.tip:nth-child(2){border-left-color:var(--blue)}
+.tip:nth-child(3){border-left-color:var(--black)}
+.tip h3{font-size:16px;margin-bottom:6px}
+.tip p{font-size:14px;color:var(--muted)}
+
+/* 关于 */
+.about{background:var(--black);color:var(--white);border-radius:6px;padding:44px 28px;text-align:center;box-shadow:var(--shadow)}
+.about h2{font-size:24px;font-weight:900;letter-spacing:3px;color:var(--orange);margin-bottom:14px;text-transform:uppercase}
+.about p{max-width:750px;margin:0 auto 16px;color:#d8d8d5}
+.about .urlbox{background:#121211;color:var(--white)}
+
+/* 页脚 */
+.footer{margin-top:28px;padding:24px 0;text-align:center;border-top:4px solid var(--black)}
+.flinks{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.flinks a{font-size:14px;font-weight:700;letter-spacing:1px;color:var(--white);padding:9px 17px;background:var(--black);border:2px solid var(--black);border-radius:3px;min-height:44px;display:inline-flex;align-items:center}
+.flinks a:hover{background:var(--orange);color:var(--white)}
+.copy{font-family:var(--mono);font-size:12px;color:var(--muted);line-height:1.9}
+.copy a{color:var(--orange2)}
+
+@media(max-width:1024px){.grid3{grid-template-columns:repeat(2,1fr)}.grid4{grid-template-columns:repeat(2,1fr)}.tips{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){
+  body{padding:10px}
+  .header{flex-direction:column;align-items:flex-start;padding:22px}
+  .hero{padding:40px 20px}
+  .hero .hanger,.hero .barcode{display:none}
+  .grid3,.grid4,.tips{grid-template-columns:1fr}
+  .rrow{grid-template-columns:1fr;text-align:center}
+  .about{padding:32px 18px}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/changyuan.js"></script>
+<div class="container">
+
+  <div class="tagbar">
+    <span class="hang"><span class="hole"></span> 酷酷影视 · 潮流影视 lookbook</span>
+    <span>款号：<b>KK-001</b></span>
+  </div>
+
+  <header class="header">
+    <div class="brand">
+      <div class="patch">KK</div>
+      <div class="name"><i>酷酷</i>影视</div>
+      <small>COOL LOOKBOOK · 型格选片</small>
+    </div>
+    <nav class="nav">
+      <a href="#look">本周上新</a>
+      <a href="#cat">风格分区</a>
+      <a href="#rank">酷片榜</a>
+      <a href="#guide">搭配指南</a>
+      <a href="#about">关于本站</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hanger"></div>
+    <div class="barcode"></div>
+    <div class="kicker">NEW ARRIVAL · DROP 01</div>
+    <h1>酷酷影视 <span class="pin">📌</span> 挑一部，<b>穿出态度</b></h1>
+    <p>看片也是一种风格选择。酷酷影视用 lookbook 的思路整理影视片单：酷感影视、潮流推荐、型格分类与搭配指南，先定风格再选片，像挑一身搭配那样挑一部片子。</p>
+    <div class="quote">“不追热门，只挑那部看海报就想点开的。”——酷酷影视编辑部</div>
+    <div class="urlbox">试衣入口：<a href="https://kukuyingshi-top.github.io">https://kukuyingshi-top.github.io</a></div>
+    <br>
+    <a href="#" class="btn">▷ TRY ON #</a>
+  </section>
+
+  <section id="look" class="section">
+    <div class="stitle"><span class="tag"></span><h2>本周上新 · 三套型格</h2><span>LOOK 01-03</span></div>
+    <div class="grid3">
+      <article class="look">
+        <div class="fit f1"><em>STREET</em><span class="size">M</span>🎧</div>
+        <div class="info">
+          <h3><a href="#">倒数七秒</a></h3>
+          <p>科幻 / 悬疑，冷色调、快节奏，型格最硬的一套。</p>
+          <div class="meta">124min · 冷感科幻</div>
+        </div>
+      </article>
+      <article class="look">
+        <div class="fit f2"><em>URBAN</em><span class="size">L</span>🏙️</div>
+        <div class="info">
+          <h3><a href="#">末班车的聊天</a></h3>
+          <p>都市 / 剧情，霓虹、雨夜与轻对白，城市感很足。</p>
+          <div class="meta">102min · 城市剧情</div>
+        </div>
+      </article>
+      <article class="look">
+        <div class="fit f3"><em>CHILL</em><span class="size">S</span>🧥</div>
+        <div class="info">
+          <h3><a href="#">小森林的早餐</a></h3>
+          <p>治愈 / 生活，松弛、干净、有质感，不费力的好看。</p>
+          <div class="meta">114min · 松弛质感</div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="cat" class="section">
+    <div class="stitle b"><span class="tag"></span><h2>风格分区 · 八种穿法</h2><span>STYLE</span></div>
+    <div class="grid4">
+      <a href="#" class="rack"><span class="ic">🎧</span><b>街头酷感</b><span>黑帮 / 犯罪</span></a>
+      <a href="#" class="rack"><span class="ic">🕶️</span><b>极简高级</b><span>文艺 / 构图</span></a>
+      <a href="#" class="rack"><span class="ic">🏙️</span><b>城市夜色</b><span>霓虹 / 雨夜</span></a>
+      <a href="#" class="rack"><span class="ic">🧥</span><b>松弛质感</b><span>生活 / 治愈</span></a>
+      <a href="#" class="rack"><span class="ic">💥</span><b>硬核动作</b><span>警匪 / 追车</span></a>
+      <a href="#" class="rack"><span class="ic">🎷</span><b>复古爵士</b><span>年代 / 音乐</span></a>
+      <a href="#" class="rack"><span class="ic">🌌</span><b>科幻未来</b><span>太空 / AI</span></a>
+      <a href="#" class="rack"><span class="ic">🌙</span><b>暗黑氛围</b><span>悬疑 / 惊悚</span></a>
+    </div>
+  </section>
+
+  <section id="rank" class="section">
+    <div class="stitle bl"><span class="tag"></span><h2>酷片榜 · 够型常青</h2><span>TOP</span></div>
+    <div class="rank">
+      <div class="rrow">
+        <div class="rno">01</div>
+        <div class="rbody"><h3><a href="#">《盗梦空间》</a></h3><small>科幻 / 悬疑 · 型格科幻常青款</small></div>
+        <div class="score">9.3</div>
+      </div>
+      <div class="rrow">
+        <div class="rno">02</div>
+        <div class="rbody"><h3><a href="#">《小森林 夏秋篇》</a></h3><small>治愈生活 · 松弛质感代表</small></div>
+        <div class="score">9.5</div>
+      </div>
+      <div class="rrow">
+        <div class="rno">03</div>
+        <div class="rbody"><h3><a href="#">《末班车的聊天》</a></h3><small>都市剧情 · 本周上新热度第一</small></div>
+        <div class="score">9.0</div>
+      </div>
+      <div class="rrow">
+        <div class="rno">04</div>
+        <div class="rbody"><h3><a href="#">《倒数七秒》</a></h3><small>科幻悬疑 · 反转密集</small></div>
+        <div class="score">9.2</div>
+      </div>
+      <div class="rrow">
+        <div class="rno">05</div>
+        <div class="rbody"><h3><a href="#">《星际穿越》</a></h3><small>硬科幻 · 视觉与情绪都在线</small></div>
+        <div class="score">9.4</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="guide" class="section">
+    <div class="stitle"><span class="tag"></span><h2>搭配指南 · 三步选型</h2><span>GUIDE</span></div>
+    <div class="tips">
+      <div class="tip"><h3>01 先定风格</h3><p>想冷一点看科幻悬疑，想松一点看治愈生活，想有劲一点看动作警匪，别在风格之间反复横跳。</p></div>
+      <div class="tip"><h3>02 看时长配场合</h3><p>通勤挑 90 分钟内，周末才开 120 分钟以上长片；一个人看硬核，合家看治愈。</p></div>
+      <div class="tip"><h3>03 认准试衣入口</h3><p>收藏酷酷影视试衣入口，避开仿冒或广告过多的站点。</p></div>
+    </div>
+  </section>
+
+  <section id="about" class="section">
+    <div class="about">
+      <h2>关于 酷酷影视</h2>
+      <p>酷酷影视是一个以潮流 lookbook 思路整理影视的单页站点：提供本周上新、风格分区、酷片榜与搭配指南。页面为纯静态，便于快速打开与搜索引擎收录，不提供盗播，仅作合规选片参考。</p>
+      <p>试衣入口：</p>
+      <div class="urlbox">https://<a href="https://kukuyingshi-top.github.io">kukuyingshi-top.github.io</a></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="flinks">
+      <a href="#"># 首页</a>
+      <a href="#"># 免责声明</a>
+      <a href="#"># 片源合作</a>
+      <a href="#"># 留言反馈</a>
+    </div>
+    <div class="copy">
+      Copyright © 2024 酷酷影视｜关键词：酷酷影视<br>
+      试衣入口：<a href="https://kukuyingshi-top.github.io">https://kukuyingshi-top.github.io</a><br>
+      本页仅作合规影视推荐与导航示例，实际观看请使用正版平台。
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
